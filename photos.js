@@ -23,17 +23,17 @@
    ============================================================ */
 
 const PHOTOS = [
-  { src: 'images/people-01.svg', category: 'people', tags: ['девушка', 'половина тела', 'студия'] },
-  { src: 'images/people-02.svg', category: 'people', tags: ['парень', 'в полный рост', 'улица'] },
-  { src: 'images/people-03.svg', category: 'people', tags: ['два человека', 'диалог', 'кафе'] },
+  { src: 'people-01.svg', category: 'people', tags: ['девушка', 'половина тела', 'студия'] },
+  { src: 'people-02.svg', category: 'people', tags: ['парень', 'в полный рост', 'улица'] },
+  { src: 'people-03.svg', category: 'people', tags: ['два человека', 'диалог', 'кафе'] },
 
-  { src: 'images/animals-01.svg', category: 'animals', tags: ['кот', 'сидит', 'профиль'] },
-  { src: 'images/animals-02.svg', category: 'animals', tags: ['собака', 'бежит', 'парк'] },
-  { src: 'images/animals-03.svg', category: 'animals', tags: ['птица', 'крылья', 'небо'] },
+  { src: 'animals-01.svg', category: 'animals', tags: ['кот', 'сидит', 'профиль'] },
+  { src: 'animals-02.svg', category: 'animals', tags: ['собака', 'бежит', 'парк'] },
+  { src: 'animals-03.svg', category: 'animals', tags: ['птица', 'крылья', 'небо'] },
 
-  { src: 'images/faces-01.svg', category: 'faces', tags: ['лицо 3/4', 'портрет', 'мягкий свет'] },
-  { src: 'images/faces-02.svg', category: 'faces', tags: ['профиль', 'глаза', 'контражур'] },
+  { src: 'faces-01.svg', category: 'faces', tags: ['лицо 3/4', 'портрет', 'мягкий свет'] },
+  { src: 'faces-02.svg', category: 'faces', tags: ['профиль', 'глаза', 'контражур'] },
 
-  { src: 'images/hands-01.svg', category: 'hands', tags: ['жест', 'крупный план', 'тени'] },
-  { src: 'images/hands-02.svg', category: 'hands', tags: ['рука с карандашом', 'набросок', 'стол'] }
+  { src: 'hands-01.svg', category: 'hands', tags: ['жест', 'крупный план', 'тени'] },
+  { src: 'hands-02.svg', category: 'hands', tags: ['рука с карандашом', 'набросок', 'стол'] }
 ];
