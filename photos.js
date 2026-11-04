@@ -35,5 +35,6 @@ const PHOTOS = [
   { src: 'faces-02.svg', category: 'faces', tags: ['профиль', 'глаза', 'контражур'] },
 
   { src: 'hands-01.svg', category: 'hands', tags: ['жест', 'крупный план', 'тени'] },
+  { src: 'kist5.png', category: 'hands', tags: ['жест', 'крупный план'] },
   { src: 'hands-02.svg', category: 'hands', tags: ['рука с карандашом', 'набросок', 'стол'] }
 ];
