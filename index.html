@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Наброски — тренажёр рисования</title>
+  <meta name="description" content="Тренажёр быстрых набросков: таймер, референсы по категориям и статистика тренировок.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== ВЕРХНЯЯ ПАНЕЛЬ ===== -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Наброски</span>
+    </div>
+    <nav class="tabs" aria-label="Разделы">
+      <button class="tab is-active" data-screen="setup" type="button">Тренировка</button>
+      <button class="tab" data-screen="profile" type="button">Профиль</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ============================================================
+         ЭКРАН 1. НАСТРОЙКА СЕССИИ
+         ============================================================ -->
+    <section id="screen-setup" class="screen is-active" aria-labelledby="setup-title">
+      <p class="eyebrow">Тренажёр быстрых набросков</p>
+      <h1 id="setup-title">Рисуй каждый день<br>по чуть-чуть</h1>
+      <p class="lead">
+        Выбери, что тренируешь, и сколько времени есть на каждый рисунок.
+        Картинки будут меняться сами — успевай за таймером.
+      </p>
+
+      <div class="card">
+        <h2><span class="num">1</span> Что рисуем</h2>
+        <p class="card-hint">Можно выбрать несколько категорий.</p>
+
+        <div class="chips" id="category-filter">
+          <label class="chip">
+            <input type="checkbox" value="people" checked>
+            <span class="chip-body"><span class="chip-dot"></span>Люди</span>
+          </label>
+          <label class="chip">
+            <input type="checkbox" value="animals" checked>
+            <span class="chip-body"><span class="chip-dot"></span>Животные</span>
+          </label>
+          <label class="chip">
+            <input type="checkbox" value="faces" checked>
+            <span class="chip-body"><span class="chip-dot"></span>Лица</span>
+          </label>
+          <label class="chip">
+            <input type="checkbox" value="hands" checked>
+            <span class="chip-body"><span class="chip-dot"></span>Кисти рук</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span> Режим</h2>
+        <p class="card-hint">Сколько рисунков и сколько времени на каждый.</p>
+
+        <div class="modes" id="mode-list">
+          <button class="mode is-active" type="button" data-count="5" data-seconds="30">
+            <span class="mode-title">Разминка</span>
+            <span class="mode-sub">5 × 30 сек</span>
+          </button>
+          <button class="mode" type="button" data-count="3" data-seconds="300">
+            <span class="mode-title">3 по 5</span>
+            <span class="mode-sub">3 × 5 мин</span>
+          </button>
+          <button class="mode" type="button" data-count="10" data-seconds="60">
+            <span class="mode-title">10 по 1</span>
+            <span class="mode-sub">10 × 1 мин</span>
+          </button>
+          <button class="mode" type="button" id="mode-custom">
+            <span class="mode-title">Своя сессия</span>
+            <span class="mode-sub">настроить</span>
+          </button>
+        </div>
+
+        <div class="custom" id="custom-panel" hidden>
+          <label class="field">
+            <span>Рисунков</span>
+            <input id="custom-count" type="number" min="1" max="50" step="1" value="4">
+          </label>
+          <label class="field">
+            <span>Время на рисунок</span>
+            <select id="custom-seconds">
+              <option value="30">30 секунд</option>
+              <option value="60">1 минута</option>
+              <option value="180">3 минуты</option>
+              <option value="300">5 минут</option>
+              <option value="600">10 минут</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <button id="start-btn" class="btn btn-primary btn-wide" type="button">
+        Начать тренировку
+      </button>
+      <p class="hint" id="setup-hint" role="status"></p>
+    </section>
+
+    <!-- ============================================================
+         ЭКРАН 2. ТРЕНИРОВКА
+         ============================================================ -->
+    <section id="screen-train" class="screen" aria-labelledby="train-title">
+      <div class="train-head">
+        <h2 id="train-title" class="train-counter">
+          Рисунок <span id="photo-index">1</span> из <span id="photo-total">5</span>
+        </h2>
+        <div class="timer" id="timer-label">00:30</div>
+      </div>
+
+      <div class="stage">
+        <img id="stage-img" src="" alt="Референс для наброска">
+        <div class="stage-tags" id="stage-tags"></div>
+      </div>
+
+      <div class="progress" aria-hidden="true">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <div class="controls">
+        <button id="back-btn" class="btn" type="button">← Назад</button>
+        <button id="pause-btn" class="btn btn-primary" type="button">Пауза</button>
+        <button id="next-btn" class="btn" type="button">Пропустить →</button>
+        <button id="stop-btn" class="btn btn-ghost" type="button">Закончить</button>
+      </div>
+
+      <p class="hint center">Пробел — пауза · ← назад · → пропустить</p>
+    </section>
+
+    <!-- ============================================================
+         ЭКРАН 3. ФИНИШ СЕССИИ
+         ============================================================ -->
+    <section id="screen-done" class="screen" aria-labelledby="done-title">
+      <div class="done-card">
+        <div class="done-mark" aria-hidden="true">✓</div>
+        <h2 id="done-title">Сессия готова</h2>
+        <p class="lead" id="done-sub">Отличная работа. Дальше — только чаще.</p>
+
+        <div class="done-stats">
+          <div class="done-stat">
+            <span class="done-num" id="done-sketches">5</span>
+            <span class="done-cap">рисунков</span>
+          </div>
+          <div class="done-stat">
+            <span class="done-num" id="done-minutes">2,5</span>
+            <span class="done-cap">минут рисования</span>
+          </div>
+        </div>
+
+        <div class="done-actions">
+          <button id="again-btn" class="btn btn-primary" type="button">Ещё сессия</button>
+          <button id="done-profile-btn" class="btn" type="button">В профиль</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ЭКРАН 4. ПРОФИЛЬ
+         ============================================================ -->
+    <section id="screen-profile" class="screen" aria-labelledby="profile-title">
+      <p class="eyebrow">Личный кабинет</p>
+      <h1 id="profile-title">Твой прогресс</h1>
+      <p class="lead">Статистика хранится в этом браузере и никуда не отправляется.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-value" id="stat-sketches">0</span>
+          <span class="stat-cap">набросков</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-hours">0 ч</span>
+          <span class="stat-cap">рисования</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-streak">0</span>
+          <span class="stat-cap">дней подряд</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Огоньки</h2>
+        <p class="card-hint">Каждый квадратик — день. Чем больше набросков, тем ярче.</p>
+
+        <div class="calendar-head">
+          <button class="cal-nav" id="cal-prev" type="button" aria-label="Предыдущий месяц">‹</button>
+          <span class="cal-title" id="cal-title">—</span>
+          <button class="cal-nav" id="cal-next" type="button" aria-label="Следующий месяц">›</button>
+          <button class="cal-today" id="cal-today" type="button">Сегодня</button>
+        </div>
+
+        <div class="calendar-weekdays" aria-hidden="true">
+          <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+        </div>
+
+        <div class="calendar" id="calendar"></div>
+
+        <div class="calendar-legend">
+          <span>меньше</span>
+          <i class="cal-cell lvl-0"></i>
+          <i class="cal-cell lvl-1"></i>
+          <i class="cal-cell lvl-2"></i>
+          <i class="cal-cell lvl-3"></i>
+          <span>больше</span>
+        </div>
+      </div>
+
+      <button id="reset-btn" class="btn btn-ghost profile-reset" type="button">Сбросить прогресс</button>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>Сделано на HTML, CSS и JavaScript</span>
+  </footer>
+
+  <!-- Порядок важен: сначала данные, потом логика -->
+  <script src="photos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
