@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Кисти рук">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b6e8c"/>
+      <stop offset="1" stop-color="#2e3a4e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.38" r="0.8">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+
+  <g stroke="#ffffff" stroke-opacity="0.3" stroke-width="3" fill="none">
+    <path d="M60 122V62h60"/>
+    <path d="M1140 122V62h-60"/>
+    <path d="M60 678v60h60"/>
+    <path d="M1140 678v60h-60"/>
+  </g>
+
+  <text x="62" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="40" fill="#ffffff" fill-opacity="0.94">Кисти рук</text>
+  <text x="1138" y="104" text-anchor="end" font-family="Arial, sans-serif" font-size="18" letter-spacing="5" fill="#ffffff" fill-opacity="0.55">ТЕСТОВАЯ КАРТИНКА</text>
+
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M512 636V526c0-16 13-29 29-29h6v-92a22 22 0 0144 0v92h14v-128a22 22 0 0144 0v128h14v-96a22 22 0 0144 0v96h14v-56a22 22 0 0144 0v142c0 62-44 106-108 106h-74c-54 0-96-40-96-94z"/>
+  </g>
+
+  <text x="1138" y="748" text-anchor="end" font-family="Georgia, serif" font-size="150" fill="#ffffff" fill-opacity="0.2">01</text>
+</svg>
